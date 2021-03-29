@@ -69,11 +69,11 @@ window.addEventListener("submit", function() {
             document.getElementById("cargoStatus").innerHTML = "Cargo Mass too high for launch ";
             launchChecklist.cargoMassReady = false;
          }
-         //if (cargoMassInput < 9999)
          else {
             document.getElementById("faultyItems").style.visibility = "hidden";
             launchChecklist.cargoMassReady = true;
          }
+         return console.log("cargo mass checked")
       };
       let shuttleReady = function(){
          
@@ -84,63 +84,33 @@ window.addEventListener("submit", function() {
             document.getElementById("copilotStatus").innerHTML = `Co-Pilot ${copilotNameInput.value} is ready for Launch`;
          launchChecklist.readyForLaunch = true
          }
-
+         return console.log("shuttle ready checked")
       }
-      //       let launchData = {
-      //    pilotName: pilotNameInput.value, 
-      //    copilotName: copilotNameInput.value,
-      //    fuelLevel: Number(fuelLevelInput.value),
-      //    cargoMass: Number(cargoMassInput.value)
-      // }
       console.log(launchChecklist)
       validInfoCheck()
       fuelLevelCheck()
       cargoMassCheck()
       shuttleReady()
        console.log(launchChecklist)
-       
-   // 
    });
-
-// window.addEventListener("load", function() {
-//     fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-//         console.log(response);
-//     } );
-//   });
 
   window.addEventListener("load", function() {
    fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-      // Access the JSON in the response
       response.json().then( function(json) {
          console.log(json[0]);
          const div = document.getElementById("missionTarget");
-// Add HTML that includes the JSON data
+         selected = json[0]
    div.innerHTML = `
    <h2>Mission Destination</h2>
    <ol>
-      <li>Name: ${JSON.name}</li>
-      <li>Diameter: ${JSON.diameter}</li>
-      <li>Star: ${JSON.star}</li>
-      <li>Distance from Earth: ${JSON.distance}</li>
-      <li>Number of Moons: ${JSON.moons}</li>
+      <li>Name: ${selected.name}</li>
+      <li>Diameter: ${selected.diameter}</li>
+      <li>Star: ${selected.star}</li>
+      <li>Distance from Earth: ${selected.distance}</li>
+      <li>Number of Moons: ${selected.moons}</li>
    </ol>
-   <img src="${JSON.image}">
+   <img src="${selected.image}">
    `;
       });
    });
 });
-
-// // This block of code shows how to format the HTML once you fetch some planetary JSON!
-// const div = document.getElementById("missionTarget");
-// // Add HTML that includes the JSON data
-//    div.innerHTML = `
-//    <h2>Mission Destination</h2>
-//    <ol>
-//       <li>Name: ${JSON.name}</li>
-//       <li>Diameter: ${JSON.diameter}</li>
-//       <li>Star: ${JSON.star}</li>
-//       <li>Distance from Earth: ${JSON.distance}</li>
-//       <li>Number of Moons: ${JSON.moons}</li>
-//    </ol>
-//    <img src="${JSON.image}">
-//    `;
