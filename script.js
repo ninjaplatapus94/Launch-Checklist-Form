@@ -49,9 +49,7 @@ window.addEventListener("submit", function() {
             document.getElementById("launchStatus").style.color = "red"
             document.getElementById("fuelStatus").innerHTML = "Fuel level not high enough for launch";
             launchChecklist.fuelLevelReady = false;
-         } else 
-         //if (fuelLevelInput.value > 10000 && cargoMassInput.value > 10000 && launchChecklist.pilotReady === true) 
-         {
+         } else {
             document.getElementById("faultyItems").style.visibility = "hidden";
             document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
             launchChecklist.fuelLevelReady = true;
